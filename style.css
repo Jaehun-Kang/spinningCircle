@@ -1,0 +1,132 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background: #222;
+  font-family: sans-serif;
+  color: white;
+}
+#ui {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 200px;
+  max-width: 240px;
+  box-sizing: border-box;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  user-select: none;
+}
+
+.color-row,
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.color-row input[type="color"] {
+  flex-shrink: 0;
+  width: 32px;
+  height: 26px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.color-row input[type="text"] {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.slider-row input[type="number"] {
+  width: 60px;
+  min-width: 60px;
+}
+
+.slider-row input[type="range"] {
+  flex-grow: 1;
+  min-width: 80px;
+}
+
+button {
+  font-size: 13px;
+  padding: 6px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  border: none;
+  background: #444;
+  color: white;
+  transition: background 0.25s ease;
+}
+
+button:hover:not(:disabled) {
+  background: #666;
+}
+
+button:disabled {
+  background: #222;
+  cursor: default;
+}
+
+#toggleRotate,
+#toggleDirection {
+  font-weight: 700;
+  user-select: none;
+  border-radius: 6px;
+  background: #444;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.25s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#toggleRotate {
+  font-size: 15px;
+  padding: 8px 14px;
+  flex-grow: 1;
+}
+
+#toggleDirection {
+  font-size: 18px;
+  margin-left: 8px;
+  width: 36px;
+  height: 36px;
+  line-height: 1;
+  padding: 0;
+}
+
+#discColorsContainer {
+  max-height: 160px;
+  overflow-y: auto;
+  margin-bottom: 6px;
+  border: 1px solid #444;
+  padding: 8px;
+  border-radius: 6px;
+  background: #111;
+  box-sizing: border-box;
+}
+
+#discColorsContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+#discColorsContainer::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 3px;
+}
