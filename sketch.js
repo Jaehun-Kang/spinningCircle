@@ -24,6 +24,8 @@ let undoStack = [];
 let redoStack = [];
 const MAX_HISTORY = 20;
 
+let bgImage = null;
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   angleMode(RADIANS);
@@ -168,6 +170,22 @@ function setup() {
 
   document.getElementById("undoBtn").onclick = () => undo();
   document.getElementById("redoBtn").onclick = () => redo();
+
+  document.getElementById("bgImageInput").onchange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(evt) {
+      loadImage(evt.target.result, img => {
+        // 이미지 크기를 원판 사이즈로 조정 (정사각형)
+        bgImage = createGraphics(discRadius * 2, discRadius * 2);
+        bgImage.imageMode(CENTER);
+        bgImage.image(img, discRadius, discRadius, discRadius * 2, discRadius * 2);
+      });
+    };
+    reader.readAsDataURL(file);
+  };
 }
 
 function draw() {
@@ -178,6 +196,10 @@ function draw() {
   push();
   rotate(discRotation);
   drawDisc();
+  if (bgImage) {
+    imageMode(CENTER);
+    image(bgImage, 0, 0);
+  }
   imageMode(CENTER);
   image(drawingLayer, 0, 0);
   if (showGrid) drawGrid();
